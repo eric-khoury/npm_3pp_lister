@@ -9,7 +9,13 @@ link to the source code of the specific version on the NPM registry.
 
 ## Usage
 
+In any directory with a package.json file:
+
     $ npm_3pp_lister list
+
+## Todo
+- list dev/peer dependencies
+- ??
 
 ## License
 
