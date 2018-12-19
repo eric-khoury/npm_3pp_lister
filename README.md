@@ -13,7 +13,7 @@ In any directory with a package.json file:
 
     $ npm_3pp_lister list
 
-![Output]('Screenshot.png')
+![Output](Screenshot.png)
 
 ## Todo
 - list dev/peer dependencies
