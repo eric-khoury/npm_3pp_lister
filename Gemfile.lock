@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    npm_3pp_lister (0.1.0)
+    npm_3pp_lister (0.2.0)
       colorize (~> 0.8.1)
       pastel (~> 0.7.2)
       thor (~> 0.20.0)
