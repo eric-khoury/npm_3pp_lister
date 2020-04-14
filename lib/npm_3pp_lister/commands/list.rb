@@ -16,13 +16,20 @@ module Npm3ppLister
           file = File.read('./package.json')
           json = JSON.parse(file)
 
+          output.puts "dependencies:"
+          output.puts "\n"
           json["dependencies"].each do |key, val|
-            File.open("./3pp_list.txt","a") do |f|
-              output.puts "#{key.colorize(:yellow)}: #{val}" + " " + "https://registry.npmjs.org/#{key}/-/#{key}-#{val.gsub("^", "").gsub("~", "")}.tgz".colorize(:green)
-              f.puts "#{key}:#{val} - https://registry.npmjs.org/#{key}/-/#{key}-#{val.gsub("^", "").gsub("~", "")}.tgz"
-            end
+            source_code_url = `npm view #{key}@#{val} dist.tarball`
+            output.puts "#{key.colorize(:yellow)}: #{val}" + " " + source_code_url.colorize(:green)
           end
-          output.puts "\n\nResult written to 3pp_list.txt"
+
+          output.puts "\n\n\n"
+          output.puts "devDependencies:"
+          output.puts "\n"
+          json["devDependencies"].each do |key, val|
+            source_code_url = `npm view #{key}@#{val} dist.tarball`
+            output.puts "#{key.colorize(:yellow)}: #{val}" + " " + source_code_url.colorize(:green)
+          end
 
         else
           output.puts "- No package.json found here -"
